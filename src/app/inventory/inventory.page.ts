@@ -20,7 +20,7 @@ export class InventoryPage implements OnInit {
   }
 
   getInventory() {
-    this._apiService.tampil('tampildata.php').subscribe({
+    this._apiService.tampil('tampil_data.php').subscribe({
       next: (res: any) => {
         console.log('sukses', res);
         this.dataInventory = res;
@@ -60,7 +60,7 @@ export class InventoryPage implements OnInit {
         nama: this.nama,
         jenis: this.jenis,
       };
-      this._apiService.tambah(data, '/tambahdata.php').subscribe({
+      this._apiService.tambah(data, 'tambah_data.php').subscribe({
         next: (hasil: any) => {
           this.reset_model();
           console.log('berhasil tambah inventory');
@@ -77,7 +77,7 @@ export class InventoryPage implements OnInit {
     }
   }
   hapusInventory(id: any) {
-    this._apiService.hapus(id, '/hapusdatabyid.php?id=').subscribe({
+    this._apiService.hapus(id, '/hapus_data.php?id=').subscribe({
       next: (res: any) => {
         console.log('sukses', res);
         this.getInventory();
@@ -89,7 +89,7 @@ export class InventoryPage implements OnInit {
     });
   }
   ambilInventory(id: any) {
-    this._apiService.lihat(id, '/lihatdatabyid.php?id=').subscribe({
+    this._apiService.lihat(id, '/lihat_data.php?id=').subscribe({
       next: (hasil: any) => {
         console.log('sukses', hasil);
         let inventory = hasil;
@@ -108,7 +108,7 @@ export class InventoryPage implements OnInit {
       nama: this.nama,
       jenis: this.jenis,
     };
-    this._apiService.edit(data, '/editdatabyid.php').subscribe({
+    this._apiService.edit(data, '/edit_data.php').subscribe({
       next: (hasil: any) => {
         console.log(hasil);
         this.reset_model();
